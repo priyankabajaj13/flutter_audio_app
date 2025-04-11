@@ -1,8 +1,8 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pb_audio_books/pages/new_home_page.dart';
 import 'package:pb_audio_books/resources/audio_helper.dart';
-import 'package:pb_audio_books/resources/notifiers/audio_books_notifier.dart';
-import 'package:provider/provider.dart';
 
 import 'pages/home_page.dart';
 
@@ -11,7 +11,10 @@ late AudioHandler audioHandler;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   audioHandler = await initAudioService();
-  runApp(const AudioBooksApp());
+  runApp(ProviderScope(
+      child: const AudioBooksApp()
+  ),
+  );
 }
 
 class AudioBooksApp extends StatefulWidget {
@@ -53,20 +56,18 @@ class AudioBooksAppState extends State<AudioBooksApp>
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => AudioBooksNotifier(),
-      child: MaterialApp(
+      return MaterialApp(
         theme: ThemeData(
           textTheme: const TextTheme(
             titleLarge:
-                TextStyle(fontFamily: "Aleo", fontWeight: FontWeight.bold),
+            TextStyle(fontFamily: "Aleo", fontWeight: FontWeight.bold),
             titleMedium: TextStyle(fontFamily: "Slabo", fontSize: 16.0),
           ),
           primarySwatch: Colors.pink,
         ),
-        home: const HomePage(),
-      ),
-    );
+        home:  NewHomePage(),
+      );
+
   }
 
   void connect() async {

@@ -9,7 +9,6 @@ import '../resources/models/book.dart';
 import '../resources/repository.dart';
 import '../widgets/player_service.dart';
 import '../widgets/title.dart';
-// import 'package:flutter_downloader/flutter_downloader.dart';
 
 
 class DetailPage extends StatefulWidget {
@@ -173,7 +172,8 @@ class DetailPageState extends State<DetailPage> {
                                       title = item.title;
                                     });
                                   },
-                                ))
+                                ),
+                        )
                             .toList(),
                       );
                     } else {
@@ -193,6 +193,7 @@ class DetailPageState extends State<DetailPage> {
               ),
             ),
           ],
-        ));
+        ),
+    );
   }
 }
