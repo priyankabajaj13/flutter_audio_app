@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pb_audio_books/pages/new_home_page.dart';
 import 'package:pb_audio_books/resources/audio_helper.dart';
 
-import 'pages/home_page.dart';
 
 late AudioHandler audioHandler;
 
